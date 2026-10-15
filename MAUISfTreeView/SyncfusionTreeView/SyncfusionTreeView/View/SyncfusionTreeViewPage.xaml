@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SyncfusionTreeView"
+             xmlns:treeviewengine="clr-namespace:Syncfusion.TreeView.Engine;assembly=Syncfusion.Maui.TreeView"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.TreeView;assembly=Syncfusion.Maui.TreeView"
+             xmlns:checkbox="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+             x:Class="SyncfusionTreeView.SyncfusionTreeViewPage"
+             Title="SyncfusionTreeViewPage">
+
+    <ContentPage.Behaviors>
+        <local:SyncfusionTreeViewPageBehavior/>
+    </ContentPage.Behaviors>
+
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,Auto,*" RowSpacing="2">
+            <Button x:Name="detailsButton" Text="Get performance metrics" HorizontalOptions="Center"/>
+            <SearchBar x:Name="searchBar" 
+                       Grid.Row="1"
+                       TextChanged="searchBar_TextChanged"
+                       Placeholder="Search nodes..."/>
+            <local:CustomSfTreeView x:Name="treeView"
+                                    Grid.Row="2"
+                                    NodeSizeMode="Dynamic"
+                                    
+                                    AutoExpandMode="AllNodesExpanded"
+                                    ChildPropertyName="Children" 
+                                    ItemsSource="{Binding Nodes}"
+                                    FilterMode="Contains"
+                                    FilterPath="Name"
+                                    Filtered="treeView_Filtered"
+                                    ItemTemplateContextType="Node">
+                <syncfusion:SfTreeView.SortDescriptors>
+                    <treeviewengine:SortDescriptor PropertyName="Name" Direction="Ascending" />
+                </syncfusion:SfTreeView.SortDescriptors>
+
+                <syncfusion:SfTreeView.EmptyView>
+                    <Border Padding="10" Stroke="Purple" StrokeThickness="2" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="6"/>
+                        </Border.StrokeShape>
+                        <Label Text="No Items Found" 
+                    HorizontalTextAlignment="Center" 
+                    VerticalTextAlignment="Center" 
+                    FontSize="16" FontAttributes="Bold" TextColor="Blue"/>
+                    </Border>
+                </syncfusion:SfTreeView.EmptyView>
+                <local:CustomSfTreeView.ItemTemplate>
+                    <DataTemplate>
+                        <local:CustomGrid RowDefinitions="Auto" VerticalOptions="Center">
+                            <Grid ColumnDefinitions="40,*">
+                                <!--<checkbox:SfCheckBox VerticalOptions="Center"                                                      
+                                                     HorizontalOptions="Center"
+                                                     IsChecked="{Binding IsChecked, Mode=TwoWay}" />-->
+                                <Label Grid.Column="1"
+                                       Text="{Binding Content.Name}"
+                                       VerticalTextAlignment="Center"
+                                       Margin="6,0,0,0" />
+                            </Grid>
+                        </local:CustomGrid>
+                    </DataTemplate>
+                </local:CustomSfTreeView.ItemTemplate>
+            </local:CustomSfTreeView>
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>
