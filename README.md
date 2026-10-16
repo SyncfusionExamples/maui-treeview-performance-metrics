@@ -1,6 +1,6 @@
-# maui-treeview-performance-metrics
+# MAUI TreeView Performance Metrics
 
-Performance benchmark samples, benchmark results, and test environment documentation for the .NET MAUI TreeView control across Android, iOS, Windows, and macOS. These benchmarks enable reproducible performance validation for TreeView item loading operations across supported platforms.
+This example repo maintains the demo used to measure the performance of the Syncfusion MAUI TreeView control for all the 4 platforms with latest metrics details for reference.
 
 ## TreeView Item Loading Performance
 
