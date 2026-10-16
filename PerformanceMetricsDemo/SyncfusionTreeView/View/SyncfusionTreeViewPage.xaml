@@ -49,9 +49,6 @@
                     <DataTemplate>
                         <local:CustomGrid RowDefinitions="Auto" VerticalOptions="Center">
                             <Grid ColumnDefinitions="40,*">
-                                <!--<checkbox:SfCheckBox VerticalOptions="Center"                                                      
-                                                     HorizontalOptions="Center"
-                                                     IsChecked="{Binding IsChecked, Mode=TwoWay}" />-->
                                 <Label Grid.Column="1"
                                        Text="{Binding Content.Name}"
                                        VerticalTextAlignment="Center"
